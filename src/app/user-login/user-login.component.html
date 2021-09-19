@@ -1,0 +1,24 @@
+<div class="row content-card">
+  <div class="col">
+    <h1 id="title">Sign In</h1>
+    <p >Welcome to <span id="description">the best movie app</span> </p>
+    <form id="login-form">
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>Enter your Email</mat-label>
+          <input matInput required>
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" required>
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+      <button id="submit-btn" mat-stroked-button>
+        Login
+      </button>
+    </form>
+  </div>
+</div>
