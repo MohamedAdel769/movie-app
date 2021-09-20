@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: '', component: CarouselComponent},
   {path: 'catalog', component: CatalogComponent},
   {path: 'login', component: UserLoginComponent}
+  // TODO: create 404 route
 ];
 
 @NgModule({
