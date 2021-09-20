@@ -1,0 +1,33 @@
+img{
+  position:relative;
+  z-index:-1;
+  display:block;
+  max-height: 89vh;
+  overflow: hidden;
+}
+
+.carousel-caption{
+  position: absolute;
+  top: 20%;
+
+}
+
+.carousel-caption div{
+  font-weight: bold;
+  text-shadow: 3px 5px 2px #000;
+  margin-bottom: 10px;
+}
+
+.carousel-caption a{
+  color: #222;
+  font-size: 20px;
+  border: 2px solid #000;
+}
+
+.gradient{
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    )
+}
