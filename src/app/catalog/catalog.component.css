@@ -29,6 +29,6 @@ td, th{
 }
 
 th{
-  background-color: var(--color-warn);
+  background-color: var(--color-accent);
   color: #222;
 }
