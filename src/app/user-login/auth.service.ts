@@ -10,12 +10,15 @@ export class AuthService{
   ];
 
   sessionEvent = new EventEmitter<SessionDetails>();
+  currSession = new SessionDetails(false, new User('',''));
 
   logIn(newUser: User) : boolean{
     const uIndex = this.users.findIndex( ({ email }) => email === newUser.email );
 
     if(uIndex !== -1 && this.users[uIndex].password === newUser.password){
-      this.sessionEvent.emit(new SessionDetails(true, newUser));
+      this.currSession = new SessionDetails(true, newUser);
+      this.sessionEvent.emit(this.currSession);
+      localStorage.setItem('userData', JSON.stringify(newUser));
       return true;
     }
     else{
@@ -25,19 +28,22 @@ export class AuthService{
 
   // TODO: add autoLogin feature
 
-  // autoLogIn(){
-  //   const userData: {
-  //     email: string;
-  //     password: string;
-  //   } = JSON.parse(<string>localStorage.getItem('userData'));
-  //   if(!userData)
-  //     return;
-  //
-  //   const loadedUser = new User(userData.email, userData.password);
-  //   this.sessionEvent.emit({isLoggedIn: true, currentUser: loadedUser});
-  // }
+  autoLogIn(){
+    const userData: {
+      email: string;
+      password: string;
+    } = JSON.parse(<string>localStorage.getItem('userData'));
+    if(!userData)
+      return;
+
+    const loadedUser = new User(userData.email, userData.password);
+    this.currSession = new SessionDetails(true, loadedUser);
+    this.sessionEvent.emit(this.currSession);
+  }
 
   logOut(){
     this.sessionEvent.emit(new SessionDetails(false, new User('', '') ) );
+    this.currSession = new SessionDetails(false, new User('',''));
+    localStorage.removeItem('userData');
   }
 }

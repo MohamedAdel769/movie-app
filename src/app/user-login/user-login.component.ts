@@ -24,7 +24,8 @@ export class UserLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.isLoggedIn = this.authService.currSession.isLoggedIn;
+    this.currentUser = this.authService.currSession.currUser;
   }
 
   onSubmit(){
