@@ -37,7 +37,7 @@ export class AuthService{
   //   this.sessionEvent.emit({isLoggedIn: true, currentUser: loadedUser});
   // }
 
-  // logOut(){
-  //   this.sessionEvent.emit({isLoggedIn: false, currentUser: {email: '', password: ''}});
-  // }
+  logOut(){
+    this.sessionEvent.emit(new SessionDetails(false, new User('', '') ) );
+  }
 }

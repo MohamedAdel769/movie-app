@@ -5,9 +5,15 @@
       <div class="navbar-nav me-auto">
         <a routerLink="/catalog" class="nav-item-btn" routerLinkActive="active">Home</a>
       </div>
-      <div>
+      <div *ngIf="!isLoggedIn else logoutBtn">
         <a routerLink="/login" class="nav-link nav-item-btn" routerLinkActive="active">Login</a>
       </div>
+      <ng-template #logoutBtn>
+        <div>
+          <a routerLink="/login" class="nav-link nav-item-btn" routerLinkActive="active" (click)="logout()">Logout</a>
+        </div>
+      </ng-template>
+
     </div>
   </nav>
 </header>
