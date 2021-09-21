@@ -1,18 +1,18 @@
 <div class="row">
   <div class="col-xs-12">
     <div id="movie-banner">
-      <img class="d-block m-auto" src="https://via.placeholder.com/740x380">
+      <img class="d-block m-auto" [src]="movie.imgPath">
     </div>
     <div id="movie-details">
-      <div class="mat-display-2 mb-2">Black Panther</div>
-      <div class="mat-card-subtitle">Action/Fantasy</div>
-      <div class="mat-body-2 mt-1">Rate: <strong>86%</strong></div>
+      <div class="mat-display-2 mb-2">{{ movie.title }}</div>
+      <div class="mat-card-subtitle">{{ movie.genre }}</div>
+      <div class="mat-body-2 mt-1">Rate: <strong> {{ movie.rate }} </strong></div>
     </div>
     <div class="row">
       <div class="col-md-8 m-auto">
         <hr>
         <div id="movie-overview">
-          <p class="mat-body-strong">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consectetur cupiditate deserunt dicta dignissimos dolor dolore, doloribus, ducimus fugiat, harum illo inventore minima obcaecati quis quos sed sequi similique voluptatem?</p>
+          <p class="mat-body-strong"> {{ movie.overView }} </p>
         </div>
       </div>
     </div>
