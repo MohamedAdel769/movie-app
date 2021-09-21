@@ -17,6 +17,8 @@ import {AuthService} from "./user-login/auth.service";
 import { ErrorHandlingComponent } from './error-handling/error-handling.component';
 import {ErrorHandlingService} from "./error-handling/error-handling.service";
 import {MovieDbService} from "./shared/movie-db.service";
+import {HttpClientModule} from "@angular/common/http";
+import {MovieApiService} from "./shared/movie-api.service";
 
 
 @NgModule({
@@ -35,10 +37,11 @@ import {MovieDbService} from "./shared/movie-db.service";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [AuthService, ErrorHandlingService, MovieDbService],
+  providers: [AuthService, ErrorHandlingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
