@@ -16,25 +16,17 @@
         <th>rank</th>
         <th>name</th>
         <th>rating</th>
-        <th>no. of reviews</th>
+        <th>genre</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>1</td>
+      <tr *ngFor="let movie of movieList; index as i">
+        <td> {{ i+1 }} </td>
         <td>
-          <a routerLink="movie/1">Fight Club</a>
+          <a routerLink="movie/{{ movie.id }}">{{ movie.title }}</a>
         </td>
-        <td>8.9</td>
-        <td>3439</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>
-          <a routerLink="movie/2">Coco</a>
-        </td>
-        <td>8.5</td>
-        <td>352</td>
+        <td>{{ movie.rate }}</td>
+        <td>{{ movie.genre }}</td>
       </tr>
       </tbody>
     </table>
