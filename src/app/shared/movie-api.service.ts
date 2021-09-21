@@ -17,16 +17,35 @@ export class MovieApiService{
   }
 
   fetchMovies(){
-    // TODO: enhance request link
     this.http.get<MoviesResp>(
       `${this.base_url}/movie/top_rated?api_key=${this.api_key}&language=en-US&page=1`)
-      .subscribe(result => this.parseResponse(result));
+      .subscribe(result => this.parseMovies(result));
   }
 
-  parseResponse(respone: MoviesResp){
-    for(let movie of respone.results){
+  fetchGenres(){
+    this.http.get<{genres: Genre[]}>(
+      `${this.base_url}/genre/movie/list?api_key=${this.api_key}&language=en-US`)
+      .subscribe( result => this.parseGenres(result));
+  }
+
+  getGenre(ID: number){
+    const index = this.genres.findIndex( ({id}) => id == ID);
+    return index==-1 ? '' : this.genres[index].name;
+  }
+
+  parseGenres(response: {genres: Genre[]}){
+    this.genres = response.genres;
+  }
+
+  parseMovies(response: MoviesResp){
+    for(let movie of response.results){
+      const genres: number[] = movie.genre_ids;
+
+      //TODO: use all genres
+      const chosenGenre = this.getGenre(genres[0]);
+
       const fetchedMovie = new Movie(movie.id, this.img_path + movie.backdrop_path,
-        movie.title, '', movie.vote_average, movie.overview);
+        movie.title, chosenGenre, movie.vote_average, movie.overview);
 
       this.movies.push(fetchedMovie);
     }

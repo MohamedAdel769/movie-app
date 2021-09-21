@@ -15,6 +15,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.authService.autoLogIn();
+    this.movieAPI.fetchGenres();
     this.movieAPI.fetchMovies();
   }
 

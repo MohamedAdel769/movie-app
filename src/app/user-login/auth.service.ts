@@ -9,6 +9,7 @@ export class AuthService{
     new User("t@gmail.com", "asd1234")
   ];
 
+  //TODO: use subject instead
   sessionEvent = new EventEmitter<SessionDetails>();
   currSession = new SessionDetails(false, new User('',''));
 
@@ -25,8 +26,6 @@ export class AuthService{
       return false;
     }
   }
-
-  // TODO: add autoLogin feature
 
   autoLogIn(){
     const userData: {
