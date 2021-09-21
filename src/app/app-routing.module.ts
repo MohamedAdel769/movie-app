@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import {CarouselComponent} from "./carousel/carousel.component";
 import {CatalogComponent} from "./catalog/catalog.component";
 import {UserLoginComponent} from "./user-login/user-login.component";
+import {AuthGuardService} from "./user-login/auth-guard.service";
 
 const routes: Routes = [
   {path: '', component: CarouselComponent},
-  {path: 'catalog', component: CatalogComponent},
+  {path: 'catalog', component: CatalogComponent, canActivate: [AuthGuardService]},
   {path: 'login', component: UserLoginComponent}
   // TODO: create 404 route
 ];
