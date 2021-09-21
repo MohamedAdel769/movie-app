@@ -16,6 +16,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import {AuthService} from "./user-login/auth.service";
 import { ErrorHandlingComponent } from './error-handling/error-handling.component';
 import {ErrorHandlingService} from "./error-handling/error-handling.service";
+import {MovieDbService} from "./shared/movie-db.service";
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import {ErrorHandlingService} from "./error-handling/error-handling.service";
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [AuthService, ErrorHandlingService],
+  providers: [AuthService, ErrorHandlingService, MovieDbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
