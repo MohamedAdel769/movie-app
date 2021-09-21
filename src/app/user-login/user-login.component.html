@@ -1,10 +1,11 @@
-<div class="row content-card">
+<div class="row content-card" *ngIf="!isLoggedIn else userProfile">
   <div class="col">
-    <h1 id="title">Sign In</h1>
-    <p >Welcome to <span id="description">the best movie app</span> </p>
-    <form id="login-form" (ngSubmit)="onSubmit()" #f="ngForm">
+      <h1 id="title">Sign In</h1>
+      <p >Welcome to <span id="description">the best movie app</span> </p>
+      <form id="login-form" (ngSubmit)="onSubmit()" #f="ngForm">
         <mat-form-field appearance="outline" color="primary">
           <mat-label>Enter your Email</mat-label>
+          <!--TODO: Correctly validate email-->
           <input #emailInput="ngModel" matInput required email ngModel name="email">
           <mat-hint align="start" *ngIf="!emailInput.valid && emailInput.touched">Please enter a valid email</mat-hint>
         </mat-form-field>
@@ -17,9 +18,26 @@
           </button>
         </mat-form-field>
 
-      <button class="mt-3" mat-stroked-button [disabled]="!f.valid" type="submit">
-        Login
-      </button>
-    </form>
+        <button class="mt-3" mat-stroked-button [disabled]="!f.valid" type="submit">
+          Login
+        </button>
+      </form>
+    </div>
+</div>
+
+<ng-template #userProfile>
+<div class="row">
+  <div class="col-md-6 m-auto">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>You are Logged In!</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Email: {{ currentUser.email }}
+          </p>
+        </mat-card-content>
+      </mat-card>
   </div>
 </div>
+</ng-template>

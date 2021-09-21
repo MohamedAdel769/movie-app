@@ -13,6 +13,9 @@ import { MovieDetailsComponent } from './catalog/movie-details/movie-details.com
 import { MovieItemComponent } from './catalog/movie-list/movie-item/movie-item.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import {AuthService} from "./user-login/auth.service";
+import { ErrorHandlingComponent } from './error-handling/error-handling.component';
+import {ErrorHandlingService} from "./error-handling/error-handling.service";
 
 
 @NgModule({
@@ -24,7 +27,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     MovieDetailsComponent,
     MovieItemComponent,
     UserLoginComponent,
-    CarouselComponent
+    CarouselComponent,
+    ErrorHandlingComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,7 @@ import { CarouselComponent } from './carousel/carousel.component';
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [AuthService, ErrorHandlingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
