@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {MovieDbService} from "../../shared/movie-db.service";
 import {Movie} from "../../shared/movie.model";
+import {MovieApiService} from "../../shared/movie-api.service";
 
 @Component({
   selector: 'app-movie-details',
@@ -10,13 +10,15 @@ import {Movie} from "../../shared/movie.model";
 })
 export class MovieDetailsComponent implements OnInit {
   movie: Movie;
-  constructor(private route: ActivatedRoute, private movieDB: MovieDbService) {
+  constructor(private route: ActivatedRoute, private movieAPI: MovieApiService) {
     this.movie = new Movie(0, '', 'dummy', '',0,'');
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['id'];
-    this.movie = this.movieDB.getMovie(id);
+    const id = +this.route.snapshot.params['id'];
+    this.movieAPI.fetchMovie(id).subscribe(result => {
+      this.movie = result;
+    });
   }
 
 }

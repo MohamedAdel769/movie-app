@@ -16,7 +16,6 @@ import { CarouselComponent } from './carousel/carousel.component';
 import {AuthService} from "./user-login/auth.service";
 import { ErrorHandlingComponent } from './error-handling/error-handling.component';
 import {ErrorHandlingService} from "./error-handling/error-handling.service";
-import {MovieDbService} from "./shared/movie-db.service";
 import {HttpClientModule} from "@angular/common/http";
 import {MovieApiService} from "./shared/movie-api.service";
 
@@ -41,7 +40,7 @@ import {MovieApiService} from "./shared/movie-api.service";
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [AuthService, ErrorHandlingService],
+  providers: [AuthService, ErrorHandlingService, MovieApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

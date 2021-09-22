@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Movie} from "../../shared/movie.model";
-import {MovieDbService} from "../../shared/movie-db.service";
+import {MovieApiService} from "../../shared/movie-api.service";
 
 @Component({
   selector: 'app-movie-list',
@@ -10,11 +10,14 @@ import {MovieDbService} from "../../shared/movie-db.service";
 export class MovieListComponent implements OnInit {
   movieList: Movie[] = [];
 
-  constructor(private movieDB: MovieDbService) {
-    this.movieList = this.movieDB.movies;
+  constructor(private movieAPI: MovieApiService) {
   }
 
   ngOnInit(): void {
+    this.movieAPI.fetchGenres();
+    this.movieAPI.fetchMovies().subscribe(movies => {
+      this.movieList = movies;
+    });
   }
 
 }

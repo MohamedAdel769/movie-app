@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./user-login/auth.service";
-import {MovieDbService} from "./shared/movie-db.service";
-import {MovieApiService} from "./shared/movie-api.service";
 
 @Component({
   selector: 'app-root',
@@ -11,12 +9,10 @@ import {MovieApiService} from "./shared/movie-api.service";
 })
 export class AppComponent implements OnInit{
 
-  constructor(private authService: AuthService, private movieAPI: MovieApiService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.autoLogIn();
-    this.movieAPI.fetchGenres();
-    this.movieAPI.fetchMovies();
   }
 
 }

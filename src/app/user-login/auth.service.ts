@@ -14,6 +14,7 @@ export class AuthService{
   currSession = new SessionDetails(false, new User('',''));
 
   logIn(newUser: User) : boolean{
+    //TODO: navigate to catalog page
     const uIndex = this.users.findIndex( ({ email }) => email === newUser.email );
 
     if(uIndex !== -1 && this.users[uIndex].password === newUser.password){
