@@ -36,7 +36,7 @@ export class MovieApiService{
   fetchMovies(){
     // TODO: use map to parse data
     return this.http.get<MoviesResp>(
-      `${this.base_url}/movie/top_rated?api_key=${this.api_key}&language=en-US&page=2`)
+      `${this.base_url}/movie/top_rated?api_key=${this.api_key}&language=en-US&page=1`)
       .pipe(map(responseData => {
         const movies: Movie[] = [];
         for(let movie of responseData.results){
