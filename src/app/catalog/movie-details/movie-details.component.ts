@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Movie} from "../../shared/movie.model";
 import {MovieApiService} from "../../shared/movie-api.service";
+import {CatalogService} from "../catalog.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-movie-details',
@@ -11,7 +13,8 @@ import {MovieApiService} from "../../shared/movie-api.service";
 export class MovieDetailsComponent implements OnInit {
   movie: Movie;
   isLoading: boolean = false;
-  constructor(private route: ActivatedRoute, private movieAPI: MovieApiService) {
+  constructor(private route: ActivatedRoute, private movieAPI: MovieApiService,
+              private movieService: CatalogService) {
     this.movie = new Movie(0, '', 'Loading...', '',0,'');
   }
 
@@ -22,6 +25,11 @@ export class MovieDetailsComponent implements OnInit {
       this.movie = result;
       this.isLoading = false;
     });
+    // this.movieService.movieSelected.subscribe((movie: Movie) => {
+    //   this.movie = movie;
+    //
+    // });
+    // this.movie = this.movieService.getMovie();
   }
 
 }

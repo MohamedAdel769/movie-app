@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MovieApiService} from "../shared/movie-api.service";
 
 @Component({
   selector: 'app-catalog',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private movieAPI: MovieApiService) { }
 
   ngOnInit(): void {
-
+    this.movieAPI.fetchMovies();
   }
 
 }
