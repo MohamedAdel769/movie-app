@@ -2,8 +2,9 @@ import {HttpClient} from "@angular/common/http";
 import {Genre, Movie, MovieResp, MoviesResp} from "./movie.model";
 import {Injectable} from "@angular/core";
 import {map} from "rxjs/operators";
+import {CatalogService} from "../catalog/catalog.service";
 
-@Injectable()
+@Injectable({providedIn: "root"})
 export class MovieApiService{
   base_url = "https://api.themoviedb.org/3"
   api_key = "8419c8d7a9d6c4697f34fae892c76c66";
@@ -11,7 +12,7 @@ export class MovieApiService{
   // w300,w500,w780,w1280, original
   genres: Genre[];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private catalogService: CatalogService) {
     this.genres = [];
   }
 
@@ -34,9 +35,9 @@ export class MovieApiService{
   }
 
   fetchMovies(){
-    // TODO: use map to parse data
-    return this.http.get<MoviesResp>(
-      `${this.base_url}/movie/top_rated?api_key=${this.api_key}&language=en-US&page=2`)
+    this.fetchGenres();
+    this.http.get<MoviesResp>(
+      `${this.base_url}/movie/top_rated?api_key=${this.api_key}&language=en-US&page=3`)
       .pipe(map(responseData => {
         const movies: Movie[] = [];
         for(let movie of responseData.results){
@@ -51,7 +52,9 @@ export class MovieApiService{
           movies.push(fetchedMovie);
         }
         return movies;
-      }));
+      })).subscribe(result => {
+      this.catalogService.setMovies(result);
+    });
   }
 
   fetchGenres(){

@@ -20,13 +20,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let movie of movieList; index as i">
-        <td> {{ i+1 }} </td>
+      <tr *ngFor="let movieItem of movieList; index as i">
+        <td tabindex="1">{{i+1}} </td>
         <td>
-          <a routerLink="movie/{{ movie.id }}">{{ movie.title }}</a>
+          <!--<app-movie-item [movie]="movieItem"></app-movie-item>-->
+          <a routerLink="movie/{{movieItem.id}}">{{movieItem.title}} </a>
         </td>
-        <td>{{ movie.rate }}</td>
-        <td>{{ movie.genre }}</td>
+        <td>{{movieItem.rate}} </td>
+        <td>{{movieItem.genre}}</td>
       </tr>
       </tbody>
     </table>

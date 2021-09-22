@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieItemComponent } from './movie-item.component';
+import {HttpClientModule} from "@angular/common/http";
+import {RouterModule} from "@angular/router";
+import {AppRoutingModule} from "../../../app-routing.module";
 
 describe('MovieItemComponent', () => {
   let component: MovieItemComponent;
@@ -8,7 +11,8 @@ describe('MovieItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MovieItemComponent ]
+      declarations: [ MovieItemComponent ],
+      imports: [AppRoutingModule]
     })
     .compileComponents();
   });

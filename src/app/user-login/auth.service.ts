@@ -1,7 +1,7 @@
-import {EventEmitter} from "@angular/core";
+import {EventEmitter, Injectable} from "@angular/core";
 import {SessionDetails, User} from "../shared/user.model";
 
-
+@Injectable({providedIn: "root"})
 export class AuthService{
   users: User[] = [
     new User("mo@gmail.com", "123456"),
