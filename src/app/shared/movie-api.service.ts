@@ -3,7 +3,7 @@ import {Genre, Movie, MovieResp, MoviesResp} from "./movie.model";
 import {Injectable} from "@angular/core";
 import {map} from "rxjs/operators";
 
-@Injectable()
+@Injectable({providedIn: "root"})
 export class MovieApiService{
   base_url = "https://api.themoviedb.org/3"
   api_key = "8419c8d7a9d6c4697f34fae892c76c66";

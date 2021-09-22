@@ -13,11 +13,8 @@ import { MovieDetailsComponent } from './catalog/movie-details/movie-details.com
 import { MovieItemComponent } from './catalog/movie-list/movie-item/movie-item.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { CarouselComponent } from './carousel/carousel.component';
-import {AuthService} from "./user-login/auth.service";
 import { ErrorHandlingComponent } from './error-handling/error-handling.component';
-import {ErrorHandlingService} from "./error-handling/error-handling.service";
 import {HttpClientModule} from "@angular/common/http";
-import {MovieApiService} from "./shared/movie-api.service";
 
 
 @NgModule({
@@ -40,7 +37,7 @@ import {MovieApiService} from "./shared/movie-api.service";
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [AuthService, ErrorHandlingService, MovieApiService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
