@@ -14,7 +14,6 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ErrorHandlingComponent } from './error-handling/error-handling.component';
 import {HttpClientModule} from "@angular/common/http";
-import { MovieItemComponent } from './catalog/movie-list/movie-item/movie-item.component';
 import { NotFoundComponent } from './error-handling/not-found/not-found.component';
 
 
@@ -28,7 +27,6 @@ import { NotFoundComponent } from './error-handling/not-found/not-found.componen
     UserLoginComponent,
     CarouselComponent,
     ErrorHandlingComponent,
-    MovieItemComponent,
     NotFoundComponent
   ],
   imports: [

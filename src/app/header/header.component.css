@@ -26,6 +26,7 @@ header{
   font-weight: 500;
   background-color: #FFE459;
 }
+
 .active:hover{
   color: #222;
 }

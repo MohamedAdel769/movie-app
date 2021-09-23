@@ -1,13 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieListComponent } from './movie-list.component';
-import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {MovieApiService} from "../../shared/movie-api.service";
-import {Genre, Movie, MovieResp, MoviesResp} from "../../shared/movie.model";
-import {map, retry} from "rxjs/operators";
-import {DebugElement} from "@angular/core";
-import {By} from "@angular/platform-browser";
-import {Observable} from "rxjs";
+import {Movie} from "../../shared/movie.model";
 import {CatalogService} from "../catalog.service";
 
 describe('MovieListComponent', () => {
@@ -21,9 +17,6 @@ describe('MovieListComponent', () => {
   ];
 
   class CatalogServiceDummy extends CatalogService{
-    // setMovies(value: Movie[]) {
-    //   super.setMovies(value);
-    // }
     getMovies(): Movie[] {
       return dummyMovies;
     }
@@ -61,7 +54,8 @@ describe('MovieListComponent', () => {
       const movie: Movie = new Movie(+rowData[0], '', rowData[1], rowData[3], +rowData[2], '');
       extractedList.push(movie);
     }
-    console.log(extractedList);
+
+    //console.log(extractedList);
     expect(extractedList).toEqual(dummyMovies);
   });
 });

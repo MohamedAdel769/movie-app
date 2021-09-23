@@ -18,10 +18,6 @@ export class MovieListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.movieAPI.fetchGenres();
-    // this.movieAPI.fetchMovies().subscribe(movies => {
-    //   this.movieList = movies;
-    // });
     const loaded_page = +this.route.snapshot.queryParams['page'];
     if(loaded_page)
       this.loadPage(loaded_page);

@@ -1,9 +1,9 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "./auth.service";
 import {ErrorHandlingService} from "../error-handling/error-handling.service";
 import {SessionDetails, User} from "../shared/user.model";
-import {Route, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
 
 @Component({

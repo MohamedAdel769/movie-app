@@ -6,7 +6,6 @@ import {UserLoginComponent} from "./user-login/user-login.component";
 import {AuthGuardService} from "./user-login/auth-guard.service";
 import {MovieDetailsComponent} from "./catalog/movie-details/movie-details.component";
 import {MovieListComponent} from "./catalog/movie-list/movie-list.component";
-import {ErrorHandlingComponent} from "./error-handling/error-handling.component";
 import {NotFoundComponent} from "./error-handling/not-found/not-found.component";
 
 const routes: Routes = [

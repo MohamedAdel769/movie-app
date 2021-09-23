@@ -1,9 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Movie} from "../../shared/movie.model";
 import {MovieApiService} from "../../shared/movie-api.service";
 import {CatalogService} from "../catalog.service";
-import {Subscription} from "rxjs";
 import {ErrorHandlingService} from "../../error-handling/error-handling.service";
 
 @Component({
@@ -32,10 +31,5 @@ export class MovieDetailsComponent implements OnInit {
         this.isLoading = false;
       }, 3000);
     });
-    // this.movieService.movieSelected.subscribe((movie: Movie) => {
-    //   this.movie = movie;
-    //
-    // });
-    // this.movie = this.movieService.getMovie();
   }
 }

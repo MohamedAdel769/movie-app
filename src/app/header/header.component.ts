@@ -13,8 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   sessionSub: Subscription;
 
-  constructor(private authService: AuthService, private router: Router,
-              private route: ActivatedRoute) {
+  constructor(private authService: AuthService, private router: Router) {
     this.sessionSub = this.authService.sessionEvent.subscribe((sessionData: SessionDetails) =>
     {
       this.isLoggedIn = sessionData.isLoggedIn;

@@ -9,7 +9,6 @@ export class MovieApiService{
   base_url = "https://api.themoviedb.org/3"
   api_key = "8419c8d7a9d6c4697f34fae892c76c66";
   img_path = "https://image.tmdb.org/t/p/w780";
-  // w300,w500,w780,w1280, original
   genres: Genre[];
 
   constructor(private http: HttpClient, private catalogService: CatalogService) {
