@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from "../user-login/auth.service";
 import {SessionDetails} from "../shared/user.model";
 import {Subscription} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   sessionSub: Subscription;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router,
+              private route: ActivatedRoute) {
     this.sessionSub = this.authService.sessionEvent.subscribe((sessionData: SessionDetails) =>
     {
       this.isLoggedIn = sessionData.isLoggedIn;
@@ -28,5 +30,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sessionSub.unsubscribe();
+  }
+
+  onNavigate(){
+    this.router.navigate(['/catalog'], {queryParamsHandling: "preserve"});
   }
 }
