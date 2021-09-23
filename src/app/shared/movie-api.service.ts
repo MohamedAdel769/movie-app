@@ -25,9 +25,14 @@ export class MovieApiService{
         if(responseData.genres)
           chosenGenre = responseData.genres[0].name;
 
+        let poster_path = '';
+        if(responseData.backdrop_path !== null)
+          poster_path = this.img_path + responseData.backdrop_path;
+
         const movie: Movie = new Movie(
-          ID, this.img_path + responseData.backdrop_path, responseData.title,
-          chosenGenre, responseData.vote_average, responseData.overview
+          ID, poster_path, responseData.title,
+          chosenGenre, responseData.vote_average, responseData.overview, responseData.vote_count,
+          responseData.release_date?.split('-')[0]
         );
 
         return movie;

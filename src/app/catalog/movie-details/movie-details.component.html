@@ -1,25 +1,25 @@
-<div class="row">
-  <div class="col-xs-12" *ngIf="!isLoading else spinner">
-    <div id="movie-banner">
-      <img class="d-block m-auto" [src]="movie.imgPath">
-    </div>
-    <div id="movie-details">
-      <div class="mat-display-2 mb-2">{{ movie.title }}</div>
-      <div class="mat-card-subtitle">{{ movie.genre }}</div>
-      <div class="mat-body-2 mt-1">Rate: <strong> {{ movie.rate }} </strong></div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 m-auto">
-        <hr>
-        <div id="movie-overview">
-          <p class="mat-body-strong"> {{ movie.overView }} </p>
-        </div>
-      </div>
-    </div>
+<div class="row" *ngIf="!isLoading else spinner">
+  <div class="col-xs-12" *ngIf="movie.imgPath">
+    <img id="movie-banner" class="d-block m-auto" alt="{{movie.title}}" [src]="movie.imgPath">
   </div>
-  <ng-template #spinner>
-    <div class="mt-5 d-flex justify-content-center">
-      <mat-spinner></mat-spinner>
-    </div>
-  </ng-template>
 </div>
+<div class="row" *ngIf="!isLoading && movie.id">
+    <div class="col-lg-8 m-auto mt-2" id="movie-details">
+      <article class="content-section">
+        <div id="movie-metadata">
+          <h1 class="mr-2" id="movie-title">{{ movie.title }} ({{ movie.release_date }})</h1>
+          <p class="text-muted">
+            {{ movie.genre }}
+          </p>
+          <p class="article-content">score: {{ movie.rate }} | {{ movie.vote_count }} votes</p>
+        </div>
+        <h3>Overview</h3>
+        <q class="article-content"><em>{{ movie.overView }}</em></q>
+      </article>
+    </div>
+</div>
+<ng-template #spinner>
+  <div class="mt-5 d-flex justify-content-center">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+</ng-template>
