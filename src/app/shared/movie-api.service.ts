@@ -20,10 +20,17 @@ export class MovieApiService{
     return this.http.get<MovieResp>(
       `${this.base_url}/movie/${ID}?api_key=${this.api_key}&language=en-US`)
       .pipe(map( responseData => {
-        //TODO: use all genres
         let chosenGenre = '';
-        if(responseData.genres)
+        let genres: Genre[] = [];
+        if(responseData.genres) {
           chosenGenre = responseData.genres[0].name;
+          genres = responseData.genres;
+        }
+
+        const allGenres: string[] = []
+        for(let genre of genres){
+          allGenres.push(genre.name.replace(/ /g,''));
+        }
 
         let poster_path = '';
         if(responseData.backdrop_path !== null)
@@ -32,7 +39,7 @@ export class MovieApiService{
         const movie: Movie = new Movie(
           ID, poster_path, responseData.title,
           chosenGenre, responseData.vote_average, responseData.overview, responseData.vote_count,
-          responseData.release_date?.split('-')[0]
+          responseData.release_date?.split('-')[0],allGenres
         );
 
         return movie;
@@ -49,7 +56,6 @@ export class MovieApiService{
         for(let movie of responseData.results){
           const genres: number[] = movie.genre_ids;
 
-          //TODO: use all genres
           const chosenGenre = this.getGenre(genres[0]);
 
           const fetchedMovie = new Movie(movie.id, this.img_path + movie.backdrop_path,

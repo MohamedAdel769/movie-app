@@ -4,7 +4,6 @@
       <form id="login-form" (ngSubmit)="onSubmit()" #f="ngForm">
         <mat-form-field appearance="outline" color="primary">
           <mat-label>Enter your Email</mat-label>
-          <!--TODO: Correctly validate email-->
           <input #emailInput="ngModel" matInput required email ngModel name="email">
           <mat-hint align="start" *ngIf="!emailInput.valid && emailInput.touched">Please enter a valid email</mat-hint>
         </mat-form-field>
