@@ -27,7 +27,8 @@ export class MovieApiService{
 
         const movie: Movie = new Movie(
           ID, this.img_path + responseData.backdrop_path, responseData.title,
-          chosenGenre, responseData.vote_average, responseData.overview
+          chosenGenre, responseData.vote_average, responseData.overview, responseData.vote_count,
+          responseData.release_date?.split('-')[0]
         );
 
         return movie;
