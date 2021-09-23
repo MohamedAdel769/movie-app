@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="row" *ngIf="!isLoading else spinner">
-    <div class="col-md-8 m-auto mt-2" id="movie-details">
+    <div class="col-lg-8 m-auto mt-2" id="movie-details">
       <article class="content-section">
         <div id="movie-metadata">
           <h1 class="mr-2" id="movie-title">{{ movie.title }} ({{ movie.release_date }})</h1>
@@ -14,7 +14,7 @@
           <p class="article-content">score: {{ movie.rate }} | {{ movie.vote_count }} votes</p>
         </div>
         <h3>Overview</h3>
-        <p class="article-content"><em>{{ movie.overView }}</em></p>
+        <q class="article-content"><em>{{ movie.overView }}</em></q>
       </article>
     </div>
 </div>

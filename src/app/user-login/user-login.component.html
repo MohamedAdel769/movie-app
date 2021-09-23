@@ -1,7 +1,6 @@
 <div class="row content-card" *ngIf="!isLoggedIn else userProfile">
   <div class="col">
-      <h1 id="title">Sign In</h1>
-      <p >Welcome to <span id="description">the best movie app</span> </p>
+      <p class="mt-5">Welcome to <span id="description">the best movie app</span> </p>
       <form id="login-form" (ngSubmit)="onSubmit()" #f="ngForm">
         <mat-form-field appearance="outline" color="primary">
           <mat-label>Enter your Email</mat-label>
