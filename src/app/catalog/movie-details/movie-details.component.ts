@@ -38,5 +38,4 @@ export class MovieDetailsComponent implements OnInit {
     // });
     // this.movie = this.movieService.getMovie();
   }
-
 }

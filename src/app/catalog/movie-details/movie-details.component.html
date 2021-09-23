@@ -9,7 +9,7 @@
         <div id="movie-metadata">
           <h1 class="mr-2" id="movie-title">{{ movie.title }} ({{ movie.release_date }})</h1>
           <p class="text-muted">
-            {{ movie.genre }}
+            <span *ngFor="let genre of movie.genres">{{ genre }} </span>
           </p>
           <p class="article-content">score: {{ movie.rate }} | {{ movie.vote_count }} votes</p>
         </div>

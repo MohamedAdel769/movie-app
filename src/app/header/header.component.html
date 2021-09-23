@@ -3,7 +3,7 @@
     <div class="container">
       <a routerLink="/" class="navbar-brand">Dashmala</a>
       <div class="navbar-nav me-auto">
-        <a routerLink="/catalog" class="nav-item-btn" routerLinkActive="active">Home</a>
+        <a (click)="onNavigate()" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">Home</a>
       </div>
       <div *ngIf="!isLoggedIn else logoutBtn">
         <a routerLink="/login" class="nav-link nav-item-btn" routerLinkActive="active">Login</a>

@@ -1,5 +1,6 @@
 import {EventEmitter, Injectable} from "@angular/core";
 import {SessionDetails, User} from "../shared/user.model";
+import {Subject} from "rxjs";
 
 @Injectable({providedIn: "root"})
 export class AuthService{
@@ -9,17 +10,15 @@ export class AuthService{
     new User("t@gmail.com", "asd1234")
   ];
 
-  //TODO: use subject instead
-  sessionEvent = new EventEmitter<SessionDetails>();
+  sessionEvent = new Subject<SessionDetails>();
   currSession = new SessionDetails(false, new User('',''));
 
   logIn(newUser: User) : boolean{
-    //TODO: navigate to catalog page
     const uIndex = this.users.findIndex( ({ email }) => email === newUser.email );
 
     if(uIndex !== -1 && this.users[uIndex].password === newUser.password){
       this.currSession = new SessionDetails(true, newUser);
-      this.sessionEvent.emit(this.currSession);
+      this.sessionEvent.next(this.currSession);
       localStorage.setItem('userData', JSON.stringify(newUser));
       return true;
     }
@@ -38,11 +37,11 @@ export class AuthService{
 
     const loadedUser = new User(userData.email, userData.password);
     this.currSession = new SessionDetails(true, loadedUser);
-    this.sessionEvent.emit(this.currSession);
+    this.sessionEvent.next(this.currSession);
   }
 
   logOut(){
-    this.sessionEvent.emit(new SessionDetails(false, new User('', '') ) );
+    this.sessionEvent.next(new SessionDetails(false, new User('', '') ) );
     this.currSession = new SessionDetails(false, new User('',''));
     localStorage.removeItem('userData');
   }

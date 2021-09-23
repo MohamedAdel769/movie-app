@@ -9,7 +9,6 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <!-- TODO: use material table -->
     <table>
       <thead>
       <tr>
@@ -21,15 +20,25 @@
       </thead>
       <tbody>
       <tr *ngFor="let movieItem of movieList; index as i">
-        <td tabindex="1">{{i+1}} </td>
+        <td tabindex="1">{{20*(this.currentPage-1) + i + 1}} </td>
         <td>
           <!--<app-movie-item [movie]="movieItem"></app-movie-item>-->
-          <a routerLink="movie/{{movieItem.id}}">{{movieItem.title}} </a>
+          <a [routerLink]="['movie', movieItem.id]" [queryParams]="{page: this.currentPage}">{{movieItem.title}} </a>
         </td>
         <td>{{movieItem.rate}} </td>
         <td>{{movieItem.genre}}</td>
       </tr>
       </tbody>
     </table>
+  </div>
+</div>
+<div class="row">
+  <div class="d-flex col-lg-9 m-auto justify-content-between mb-4 mt-0">
+    <div id="next-page">
+      <button mat-raised-button (click)="prevPage()">Previous</button>
+    </div>
+    <div id="prev-page">
+      <button mat-raised-button (click)="nextPage()">Next</button>
+    </div>
   </div>
 </div>
