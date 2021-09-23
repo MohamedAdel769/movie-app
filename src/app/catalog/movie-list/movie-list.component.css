@@ -16,6 +16,7 @@ table{
   margin: 30px auto;
   padding: 15px;
   text-transform: capitalize;
+  box-shadow: 0 10px 20px 0 #ffc107;
 }
 
 td, th{
@@ -38,4 +39,11 @@ a{
 
 a:hover{
   color: #53bbf1;
+}
+
+button:hover{
+  background-color: var(--color-accent);
+  color: #222;
+  font-weight: 500;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out;
 }

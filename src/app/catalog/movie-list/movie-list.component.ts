@@ -10,6 +10,7 @@ import {CatalogService} from "../catalog.service";
 })
 export class MovieListComponent implements OnInit {
   movieList: Movie[] = [];
+  currentPage: number = 1;
 
   constructor(private movieAPI: MovieApiService, public catalogService: CatalogService) {
   }
@@ -25,4 +26,15 @@ export class MovieListComponent implements OnInit {
     this.movieList = this.catalogService.getMovies();
   }
 
+  nextPage(){
+    this.currentPage++;
+    this.movieAPI.fetchMovies(this.currentPage);
+  }
+
+  prevPage(){
+    this.currentPage--;
+    if(!this.currentPage)
+      this.currentPage = 1;
+    this.movieAPI.fetchMovies(this.currentPage);
+  }
 }

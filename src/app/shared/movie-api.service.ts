@@ -39,10 +39,11 @@ export class MovieApiService{
       }));
   }
 
-  fetchMovies(){
+  fetchMovies(page?: number){
     this.fetchGenres();
+    const pageNum = page ? page : 1;
     this.http.get<MoviesResp>(
-      `${this.base_url}/movie/top_rated?api_key=${this.api_key}&language=en-US&page=3`)
+      `${this.base_url}/movie/top_rated?api_key=${this.api_key}&language=en-US&page=${pageNum}`)
       .pipe(map(responseData => {
         const movies: Movie[] = [];
         for(let movie of responseData.results){
