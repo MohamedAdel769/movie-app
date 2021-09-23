@@ -1,8 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5 m-auto">
-      <div *ngIf="loginError" class="alert alert-danger" role="alert">
+    <div class="col-lg-8 m-auto" *ngIf="loginError">
+      <div class="alert alert-danger" role="alert">
         Incorrect email or password. Try Again!
+      </div>
+    </div>
+    <div class="col-lg-8 m-auto" *ngIf="movie404">
+      <div class="alert alert-warning" role="alert">
+        Sorry. Movie not found!
+      </div>
+    </div>
+    <div class="col-lg-8 m-auto" *ngIf="loginSuccess">
+      <div class="alert alert-success" role="alert">
+        You Successfully logged in!
       </div>
     </div>
   </div>

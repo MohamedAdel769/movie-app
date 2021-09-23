@@ -1,9 +1,9 @@
 <div class="row" *ngIf="!isLoading else spinner">
-  <div class="col-xs-12">
+  <div class="col-xs-12" *ngIf="movie.imgPath">
     <img id="movie-banner" class="d-block m-auto" alt="{{movie.title}}" [src]="movie.imgPath">
   </div>
 </div>
-<div class="row" *ngIf="!isLoading else spinner">
+<div class="row" *ngIf="!isLoading && movie.id">
     <div class="col-lg-8 m-auto mt-2" id="movie-details">
       <article class="content-section">
         <div id="movie-metadata">
@@ -20,6 +20,6 @@
 </div>
 <ng-template #spinner>
   <div class="mt-5 d-flex justify-content-center">
-    <mat-spinner></mat-spinner>
+    <mat-spinner color="accent"></mat-spinner>
   </div>
 </ng-template>

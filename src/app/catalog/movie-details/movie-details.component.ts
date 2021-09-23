@@ -4,6 +4,7 @@ import {Movie} from "../../shared/movie.model";
 import {MovieApiService} from "../../shared/movie-api.service";
 import {CatalogService} from "../catalog.service";
 import {Subscription} from "rxjs";
+import {ErrorHandlingService} from "../../error-handling/error-handling.service";
 
 @Component({
   selector: 'app-movie-details',
@@ -13,8 +14,9 @@ import {Subscription} from "rxjs";
 export class MovieDetailsComponent implements OnInit {
   movie: Movie;
   isLoading: boolean = false;
+
   constructor(private route: ActivatedRoute, private movieAPI: MovieApiService,
-              private movieService: CatalogService) {
+              private movieService: CatalogService, private errorService: ErrorHandlingService) {
     this.movie = new Movie(0, '', 'Loading...', '',0,'');
   }
 
@@ -25,6 +27,10 @@ export class MovieDetailsComponent implements OnInit {
       this.movie = result;
       this.isLoading = false;
     });
+    setTimeout(() => {
+      this.errorService.movie404Fired.emit();
+      this.isLoading = false;
+    }, 3000);
     // this.movieService.movieSelected.subscribe((movie: Movie) => {
     //   this.movie = movie;
     //
