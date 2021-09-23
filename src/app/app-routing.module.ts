@@ -6,6 +6,8 @@ import {UserLoginComponent} from "./user-login/user-login.component";
 import {AuthGuardService} from "./user-login/auth-guard.service";
 import {MovieDetailsComponent} from "./catalog/movie-details/movie-details.component";
 import {MovieListComponent} from "./catalog/movie-list/movie-list.component";
+import {ErrorHandlingComponent} from "./error-handling/error-handling.component";
+import {NotFoundComponent} from "./error-handling/not-found/not-found.component";
 
 const routes: Routes = [
   {path: '', component: CarouselComponent, pathMatch: 'full'},
@@ -18,8 +20,9 @@ const routes: Routes = [
       {path: 'movie/:id', component: MovieDetailsComponent}
     ]
   },
-  {path: 'login', component: UserLoginComponent}
-  // TODO: create 404 route
+  {path: 'login', component: UserLoginComponent},
+  {path: 'page404', component: NotFoundComponent},
+  {path: '**', redirectTo: '/page404'}
 ];
 
 @NgModule({

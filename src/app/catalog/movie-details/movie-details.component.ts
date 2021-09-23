@@ -26,11 +26,12 @@ export class MovieDetailsComponent implements OnInit {
     this.movieAPI.fetchMovie(id).subscribe(result => {
       this.movie = result;
       this.isLoading = false;
+    }, error => {
+      setTimeout(() => {
+        this.errorService.movie404Fired.emit();
+        this.isLoading = false;
+      }, 3000);
     });
-    setTimeout(() => {
-      this.errorService.movie404Fired.emit();
-      this.isLoading = false;
-    }, 3000);
     // this.movieService.movieSelected.subscribe((movie: Movie) => {
     //   this.movie = movie;
     //
