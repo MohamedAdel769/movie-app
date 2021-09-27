@@ -27,6 +27,13 @@ export class MovieListComponent implements OnInit {
     this.movieList = this.catalogService.getMovies();
   }
 
+  movieSelected(movieItem: Movie){
+    this.catalogService.setMovie(movieItem);
+    this.router.navigate(['movie', movieItem.id], {
+      relativeTo: this.route,
+      queryParams: {page:  this.currentPage} });
+  }
+
   loadPage(page: number){
     this.currentPage = page;
     this.movieAPI.fetchMovies(page);

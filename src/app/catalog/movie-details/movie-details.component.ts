@@ -20,16 +20,17 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoading = true;
-    const id = +this.route.snapshot.params['id'];
-    this.movieAPI.fetchMovie(id).subscribe(result => {
-      this.movie = result;
-      this.isLoading = false;
-    }, error => {
-      setTimeout(() => {
-        this.errorService.movie404Fired.emit();
-        this.isLoading = false;
-      }, 3000);
-    });
+    // this.isLoading = true;
+    // const id = +this.route.snapshot.params['id'];
+    // this.movieAPI.fetchMovie(id).subscribe(result => {
+    //   this.movie = result;
+    //   this.isLoading = false;
+    // }, error => {
+    //   setTimeout(() => {
+    //     this.errorService.movie404Fired.emit();
+    //     this.isLoading = false;
+    //   }, 3000);
+    // });
+    this.movie = this.movieService.getMovie();
   }
 }

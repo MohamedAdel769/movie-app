@@ -46,6 +46,7 @@ export class MovieApiService{
   }
 
   fetchMovies(page?: number){
+    //TODO: add error handling
     this.fetchGenres();
     const pageNum = page ? page : 1;
     this.http.get<MoviesResp>(

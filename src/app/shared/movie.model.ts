@@ -1,6 +1,6 @@
 export class Movie{
-  constructor(public id: number, public imgPath: string, public title: string,
-              public genre: string, public rate: number, public overView: string,
+  constructor(public id?: number, public imgPath?: string, public title?: string,
+              public genre?: string, public rate?: number, public overView?: string,
               public vote_count?: number, public release_date?: string,public genres?: string[]
               ) {
   }

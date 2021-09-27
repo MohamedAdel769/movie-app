@@ -5,6 +5,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MovieApiService} from "../../shared/movie-api.service";
 import {Movie} from "../../shared/movie.model";
 import {CatalogService} from "../catalog.service";
+import {AppRoutingModule} from "../../app-routing.module";
 
 describe('MovieListComponent', () => {
   let component: MovieListComponent;
@@ -24,7 +25,7 @@ describe('MovieListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [HttpClientModule, AppRoutingModule],
       declarations: [ MovieListComponent ],
       providers: [
         MovieApiService
