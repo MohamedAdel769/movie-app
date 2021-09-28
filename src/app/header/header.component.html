@@ -1,9 +1,12 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a routerLink="/" class="navbar-brand">Dashmala</a>
-      <div class="navbar-nav me-auto">
-        <a (click)="onNavigate()" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">Home</a>
+    <div class="container-fluid d-flex justify-content-center">
+      <!--<a routerLink="/" class="navbar-brand">Dashmala</a>-->
+      <div class="navbar-nav">
+        <a (click)="onNavigate()" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">Movies</a>
+        <a (click)="onNavigate()" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">News</a>
+        <a (click)="onNavigate()" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">Celebrities</a>
+        <a (click)="onNavigate()" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">WatchList</a>
       </div>
       <div *ngIf="!isLoggedIn else logoutBtn">
         <a routerLink="/login" class="nav-link nav-item-btn" routerLinkActive="active">Login</a>

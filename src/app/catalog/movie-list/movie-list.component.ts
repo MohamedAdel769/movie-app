@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Movie} from "../../models/movie.model";
 import {MovieApiService} from "../../services/movie-api.service";
 import {CatalogService} from "../../services/catalog.service";
@@ -29,7 +29,7 @@ export class MovieListComponent implements OnInit {
 
   movieSelected(movieItem: Movie){
     this.catalogService.setMovie(movieItem);
-    this.router.navigate(['movie', movieItem.id], {
+    this.router.navigate(['m', movieItem.id], {
       relativeTo: this.route,
       queryParams: {page:  this.currentPage} });
   }

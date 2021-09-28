@@ -11,7 +11,6 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { MovieListComponent } from './catalog/movie-list/movie-list.component';
 import { MovieDetailsComponent } from './catalog/movie-details/movie-details.component';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { CarouselComponent } from './carousel/carousel.component';
 import { ErrorHandlingComponent } from './error-handling/error-handling.component';
 import {HttpClientModule} from "@angular/common/http";
 import { NotFoundComponent } from './error-handling/not-found/not-found.component';
@@ -25,7 +24,6 @@ import { NotFoundComponent } from './error-handling/not-found/not-found.componen
     MovieListComponent,
     MovieDetailsComponent,
     UserLoginComponent,
-    CarouselComponent,
     ErrorHandlingComponent,
     NotFoundComponent
   ],

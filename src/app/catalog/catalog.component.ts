@@ -7,6 +7,7 @@ import {MovieApiService} from "../services/movie-api.service";
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
+  showDetails: boolean = false;
 
   constructor(private movieAPI: MovieApiService) { }
 

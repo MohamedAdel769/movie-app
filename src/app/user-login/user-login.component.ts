@@ -36,7 +36,6 @@ export class UserLoginComponent implements OnInit, OnDestroy {
       this.loginForm.resetForm();
       this.errorHandleService.loginSuccessFired.emit();
       this.router.navigate(['/']);
-
     }
     else{
       this.errorHandleService.loginErrorFired.emit();

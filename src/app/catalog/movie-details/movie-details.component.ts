@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 import {Movie} from "../../models/movie.model";
 import {MovieApiService} from "../../services/movie-api.service";
 import {CatalogService} from "../../services/catalog.service";
@@ -14,7 +14,7 @@ export class MovieDetailsComponent implements OnInit {
   movie: Movie;
   isLoading: boolean = false;
 
-  constructor(private route: ActivatedRoute, private movieAPI: MovieApiService,
+  constructor(private router: Router, private movieAPI: MovieApiService,
               private movieService: CatalogService, private errorService: ErrorHandlingService) {
     this.movie = new Movie(0, '', 'Loading...', '',0,'');
   }
@@ -32,5 +32,9 @@ export class MovieDetailsComponent implements OnInit {
     //   }, 3000);
     // });
     this.movie = this.movieService.getMovie();
+  }
+
+  showMovies(){
+    this.router.navigate(['/'], {queryParamsHandling: "preserve"});
   }
 }
