@@ -2,9 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieListComponent } from './movie-list.component';
 import {HttpClientModule} from "@angular/common/http";
-import {MovieApiService} from "../../shared/movie-api.service";
-import {Movie} from "../../shared/movie.model";
-import {CatalogService} from "../catalog.service";
+import {MovieApiService} from "../../services/movie-api.service";
+import {Movie} from "../../models/movie.model";
+import {CatalogService} from "../../services/catalog.service";
 import {AppRoutingModule} from "../../app-routing.module";
 
 describe('MovieListComponent', () => {

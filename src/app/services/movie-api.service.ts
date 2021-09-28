@@ -1,8 +1,8 @@
 import {HttpClient} from "@angular/common/http";
-import {Genre, Movie, MovieResp, MoviesResp} from "./movie.model";
+import {Genre, Movie, MovieResp, MoviesResp} from "../models/movie.model";
 import {Injectable} from "@angular/core";
 import {map} from "rxjs/operators";
-import {CatalogService} from "../catalog/catalog.service";
+import {CatalogService} from "./catalog.service";
 
 @Injectable({providedIn: "root"})
 export class MovieApiService{
@@ -59,7 +59,7 @@ export class MovieApiService{
           const chosenGenre = this.getGenre(genres[0]);
 
           const fetchedMovie = new Movie(movie.id, this.img_path + movie.backdrop_path,
-            movie.title, chosenGenre, movie.vote_average, movie.overview);
+            movie.title, chosenGenre, movie.vote_average, movie.overview, movie.vote_count, movie.release_date?.split('-')[0]);
 
           movies.push(fetchedMovie);
         }

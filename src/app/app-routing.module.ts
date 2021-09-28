@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {CarouselComponent} from "./carousel/carousel.component";
 import {CatalogComponent} from "./catalog/catalog.component";
 import {UserLoginComponent} from "./user-login/user-login.component";
-import {AuthGuardService} from "./user-login/auth-guard.service";
+import {AuthGuardService} from "./services/auth-guard.service";
 import {MovieDetailsComponent} from "./catalog/movie-details/movie-details.component";
 import {MovieListComponent} from "./catalog/movie-list/movie-list.component";
 import {NotFoundComponent} from "./error-handling/not-found/not-found.component";

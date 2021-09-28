@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {AuthService} from "./auth.service";
-import {ErrorHandlingService} from "../error-handling/error-handling.service";
-import {SessionDetails, User} from "../shared/user.model";
+import {AuthService} from "../services/auth.service";
+import {ErrorHandlingService} from "../services/error-handling.service";
+import {SessionDetails, User} from "../models/user.model";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
 

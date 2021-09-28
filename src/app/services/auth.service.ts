@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable} from "@angular/core";
-import {SessionDetails, User} from "../shared/user.model";
+import {SessionDetails, User} from "../models/user.model";
 import {Subject} from "rxjs";
 
 @Injectable({providedIn: "root"})

@@ -24,7 +24,7 @@
         <td>
 <!--          <a id="movie-link" [routerLink]="['movie', movieItem.id]"-->
 <!--             [queryParams]="{page: this.currentPage}">{{movieItem.title}} </a>-->
-          <a id="movie-link" (click)="movieSelected(movieItem)">{{movieItem.title}}</a>
+          <a style="cursor: pointer" id="movie-link" (click)="movieSelected(movieItem)">{{movieItem.title}}</a>
         </td>
         <td>{{movieItem.rate}} </td>
         <td>{{movieItem.genre}}</td>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MovieApiService} from "../shared/movie-api.service";
+import {MovieApiService} from "../services/movie-api.service";
 
 @Component({
   selector: 'app-catalog',

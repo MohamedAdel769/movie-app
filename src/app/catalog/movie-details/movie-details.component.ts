@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Movie} from "../../shared/movie.model";
-import {MovieApiService} from "../../shared/movie-api.service";
-import {CatalogService} from "../catalog.service";
-import {ErrorHandlingService} from "../../error-handling/error-handling.service";
+import {Movie} from "../../models/movie.model";
+import {MovieApiService} from "../../services/movie-api.service";
+import {CatalogService} from "../../services/catalog.service";
+import {ErrorHandlingService} from "../../services/error-handling.service";
 
 @Component({
   selector: 'app-movie-details',

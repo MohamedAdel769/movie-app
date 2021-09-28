@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ErrorHandlingService} from "./error-handling.service";
+import {ErrorHandlingService} from "../services/error-handling.service";
 import {Router} from "@angular/router";
 
 @Component({
