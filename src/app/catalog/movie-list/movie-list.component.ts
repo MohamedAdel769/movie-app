@@ -19,7 +19,7 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit(): void {
     const loaded_page = +this.route.snapshot.queryParams['page'];
-    if(loaded_page)
+    if(loaded_page && loaded_page!=1)
       this.loadPage(loaded_page);
     this.catalogService.moviesChanged.subscribe((movies: Movie[]) => {
       this.movieList = movies;

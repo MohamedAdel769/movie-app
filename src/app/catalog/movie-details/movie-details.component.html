@@ -1,25 +1,86 @@
-<div class="row" *ngIf="!isLoading else spinner">
-  <div class="col-xs-12" *ngIf="movie.imgPath">
-    <img id="movie-banner" class="d-block m-auto" alt="{{movie.title}}" [src]="movie.imgPath">
-  </div>
-</div>
+<!--<div class="row" *ngIf="!isLoading else spinner">-->
+<!--  <div class="col-xs-12" *ngIf="movie.imgPath">-->
+<!--    <a class="video-link" style="cursor:pointer;">-->
+<!--      <img id="movie-banner" class="d-block m-auto" alt="{{movie.title}}" [src]="movie.imgPath">-->
+<!--      <div class="play-icon">-->
+<!--        <img style="width: 64px" src="assets/imgs/play.png" alt="play icon">-->
+<!--      </div>-->
+<!--    </a>-->
+<!--  </div>-->
+<!--</div>-->
 <div class="row" *ngIf="!isLoading && movie.id">
-    <div class="col-lg-8 m-auto mt-2" id="movie-details">
-      <article class="content-section">
-        <div id="movie-metadata">
-          <h1 class="mr-2" id="movie-title">{{ movie.title }} ({{ movie.release_date }})</h1>
-          <p class="text-muted">
-            <span *ngFor="let genre of movie.genres">{{ genre }} </span>
-          </p>
-          <p class="article-content">score: {{ movie.rate }} | {{ movie.vote_count }} votes</p>
-        </div>
-        <h3 id="movie-overview">Overview</h3>
-        <q class="article-content"><em>{{ movie.overView }}</em></q>
-      </article>
+  <div class="col-10">
+    <div class="row left-panel">
+      <div class="col-md-3 side-img">
+        <img [src]="movie.posterPath" [alt]="movie.title">
+<!--        <ul class="list-group list-group-flush">-->
+<!--          <li class="list-group-item">Cast</li>-->
+<!--          <li class="list-group-item">Reviews</li>-->
+<!--        </ul>-->
+      </div>
+      <div class="col-md-9 mt-2" id="movie-details">
+        <article class="content-section">
+          <div class="movie-metadata">
+            <h1 class="mr-2 movie-title">{{ movie.title }}</h1>
+            <div class="vote-box">
+              <div class="rate-box">
+                <span>{{ movie.rate }}</span>
+              </div>
+              <span class="votes-count"> <strong>{{ movie.vote_count }}</strong> Votes</span>
+            </div>
+          </div>
+          <h3 class="movie-overview">Overview</h3>
+          <q class="article-content"><em>{{ movie.overView }}</em></q>
+        </article>
+        <article class="content-section">
+          <div class="movie-metadata">
+            <h1 class="mr-2 movie-title">Cast</h1>
+            <div class="cast-list">
+              <div class="cast-item" *ngFor="let actor of movie.cast | slice:0:10">
+                <img [src]="actor.profile_path" [alt]="actor.name">
+                <div class="cast-alias">
+                  <span class="actor-name">{{ actor.name }}</span>
+                  <span>{{ actor.character }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="content-section">
+          <div class="movie-metadata">
+            <h1 class="mr-2 movie-title">Tagline</h1>
+            <div class="tagline-box">
+              <p><em>{{ movie.tagline }}</em></p>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
-  <button class="btn btn-primary" type="button" (click)="showMovies()">
-    Back
-  </button>
+  </div>
+  <div class="col-2">
+    <div class="wrapper">
+      <div class="item">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">calendar_today</mat-icon>
+        <span class="item-value">{{ movie.release_date }}</span>
+      </div>
+      <div class="item">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">theaters</mat-icon>
+        <span class="item-value">{{ movie.genres }}</span>
+      </div>
+      <div class="item">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">schedule</mat-icon>
+        <span class="item-value">{{ movie.runtime }} min</span>
+      </div>
+      <button class="btn btn-success">
+        WATCHLIST IT
+      </button>
+    </div>
+
+  </div>
+
+<!--  <button class="btn btn-primary" type="button" (click)="showMovies()">-->
+<!--    Back-->
+<!--  </button>-->
 </div>
 <ng-template #spinner>
   <div class="mt-5 d-flex justify-content-center">

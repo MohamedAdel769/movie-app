@@ -1,7 +1,10 @@
+import {Actor} from "./credits.model";
+
 export class Movie{
-  constructor(public id?: number, public imgPath?: string, public title?: string,
-              public genre?: string, public rate?: number, public overView?: string,
-              public vote_count?: number, public release_date?: string,public genres?: string[]
+  constructor(public rate: number, public id?: number, public imgPath?: string, public posterPath?: string,
+              public title?: string, public genre?: string, public overView?: string, public vote_count?: number,
+              public release_date?: string, public genres?: string[], public runtime?: number,
+              public tagline?: string, public cast?: Actor[]
               ) {
   }
 }
@@ -13,9 +16,12 @@ export interface MovieResp{
   title: string;
   backdrop_path: string | null;
   vote_average: number;
+  poster_path?: string;
   genres?: Genre[];
   vote_count?: number;
   release_date?: string;
+  runtime?: number;
+  tagline?: string;
 }
 
 export interface MoviesResp{

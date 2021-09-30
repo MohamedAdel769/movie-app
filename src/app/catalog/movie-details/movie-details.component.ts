@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Movie} from "../../models/movie.model";
 import {MovieApiService} from "../../services/movie-api.service";
@@ -14,24 +14,33 @@ export class MovieDetailsComponent implements OnInit {
   movie: Movie;
   isLoading: boolean = false;
 
-  constructor(private router: Router, private movieAPI: MovieApiService,
+  constructor(private router: Router, private movieAPI: MovieApiService, private route: ActivatedRoute,
               private movieService: CatalogService, private errorService: ErrorHandlingService) {
-    this.movie = new Movie(0, '', 'Loading...', '',0,'');
+    this.movie = this.movieService.getMovie();
   }
 
   ngOnInit(): void {
-    // this.isLoading = true;
-    // const id = +this.route.snapshot.params['id'];
-    // this.movieAPI.fetchMovie(id).subscribe(result => {
-    //   this.movie = result;
-    //   this.isLoading = false;
-    // }, error => {
-    //   setTimeout(() => {
-    //     this.errorService.movie404Fired.emit();
-    //     this.isLoading = false;
-    //   }, 3000);
-    // });
-    this.movie = this.movieService.getMovie();
+    //if(this.movie.rate == 0){
+      this.isLoading = true;
+      const id = +this.route.snapshot.params['id'];
+      this.movieAPI.fetchMovie(id).subscribe(result => {
+        this.movie = result;
+        // @ts-ignore
+        this.movie.vote_count = this.movie.vote_count.toLocaleString();
+        this.isLoading = false;
+      }, error => {
+          this.errorService.movie404Fired.emit();
+          this.isLoading = false;
+      });
+      this.movieAPI.fetchActors(id).subscribe(result => {
+        this.movie.cast = result;
+      });
+    //}
+    // else {
+    //   this.movie = this.movieService.getMovie();
+    //   // @ts-ignore
+    //   this.movie.vote_count = this.movie.vote_count.toLocaleString();
+    // }
   }
 
   showMovies(){

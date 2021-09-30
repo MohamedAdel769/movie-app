@@ -1,45 +1,62 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="d-flex justify-content-center align-items-baseline">
-      <mat-icon>stars</mat-icon>
-      <div class="m-3 mat-display-3">Top Rated Movies</div>
-      <mat-icon>stars</mat-icon>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <table>
-      <thead>
-      <tr>
-        <th>rank</th>
-        <th>name</th>
-        <th>rating</th>
-        <th>genre</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let movieItem of movieList; index as i">
-        <td tabindex="1">{{20*(this.currentPage-1) + i + 1}} </td>
-        <td>
-<!--          <a id="movie-link" [routerLink]="['movie', movieItem.id]"-->
-<!--             [queryParams]="{page: this.currentPage}">{{movieItem.title}} </a>-->
-          <a style="cursor: pointer" id="movie-link" (click)="movieSelected(movieItem)">{{movieItem.title}}</a>
-        </td>
-        <td>{{movieItem.rate}} </td>
-        <td>{{movieItem.genre}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-<div class="row">
-  <div class="d-flex col-lg-9 m-auto justify-content-between mb-4 mt-0">
-    <div id="next-page">
-      <button mat-raised-button (click)="prevPage()">Previous</button>
-    </div>
-    <div id="prev-page">
-      <button mat-raised-button (click)="nextPage()">Next</button>
+<!--<div class="row">-->
+<!--  <div class="col-xs-12">-->
+<!--    <div class="d-flex justify-content-center align-items-baseline">-->
+<!--      <mat-icon>stars</mat-icon>-->
+<!--      <div class="m-3 mat-display-3">Top Rated Movies</div>-->
+<!--      <mat-icon>stars</mat-icon>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--  <div class="col-xs-12">-->
+<!--    <table>-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th>rank</th>-->
+<!--        <th>name</th>-->
+<!--        <th>rating</th>-->
+<!--        <th>genre</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr *ngFor="let movieItem of movieList; index as i">-->
+<!--        <td tabindex="1">{{20*(this.currentPage-1) + i + 1}} </td>-->
+<!--        <td>-->
+<!--&lt;!&ndash;          <a id="movie-link" [routerLink]="['movie', movieItem.id]"&ndash;&gt;-->
+<!--&lt;!&ndash;             [queryParams]="{page: this.currentPage}">{{movieItem.title}} </a>&ndash;&gt;-->
+<!--          <a style="cursor: pointer" id="movie-link" (click)="movieSelected(movieItem)">{{movieItem.title}}</a>-->
+<!--        </td>-->
+<!--        <td>{{movieItem.rate}} </td>-->
+<!--        <td>{{movieItem.genre}}</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--  <div class="d-flex col-lg-9 m-auto justify-content-between mb-4 mt-0">-->
+<!--    <div id="next-page">-->
+<!--      <button mat-raised-button (click)="prevPage()">Previous</button>-->
+<!--    </div>-->
+<!--    <div id="prev-page">-->
+<!--      <button mat-raised-button (click)="nextPage()">Next</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="row media-grid">
+  <div class="media-block col-md-6 col-lg-3" *ngFor="let movieItem of movieList; index as i">
+    <div class="card">
+      <a style="cursor: pointer" (click)="movieSelected(movieItem)">
+        <img class="card-img-top" [src]="movieItem.posterPath" [alt]="movieItem.title">
+        <div class="info-block">
+          <span>Rank</span>
+          <span>{{i + 1}}</span>
+        </div>
+      </a>
+      <div class="card-body">
+        <h2 class="card-title">{{ movieItem.title }}</h2>
+        <span>{{ movieItem.release_date }}</span>
+      </div>
     </div>
   </div>
 </div>

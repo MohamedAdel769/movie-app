@@ -3,16 +3,32 @@ import {Genre, Movie, MovieResp, MoviesResp} from "../models/movie.model";
 import {Injectable} from "@angular/core";
 import {map} from "rxjs/operators";
 import {CatalogService} from "./catalog.service";
+import {Actor, Credits} from "../models/credits.model";
 
 @Injectable({providedIn: "root"})
 export class MovieApiService{
   base_url = "https://api.themoviedb.org/3"
   api_key = "8419c8d7a9d6c4697f34fae892c76c66";
-  img_path = "https://image.tmdb.org/t/p/w780";
+  img_size: string = 'original'
+  img_path = `https://image.tmdb.org/t/p/${this.img_size}`;
   genres: Genre[];
+  Actors: Actor[];
 
   constructor(private http: HttpClient, private catalogService: CatalogService) {
     this.genres = [];
+    this.Actors = [];
+  }
+
+  fetchActors(movieID: number){
+    return this.http.get<Credits>(
+      `${this.base_url}/movie/${movieID}/credits?api_key=${this.api_key}&language=en-US`
+    ).pipe(map (response => {
+      let actors: Actor[] = [];
+      for(let actor of response.cast){
+        actors.push({profile_path: this.img_path + actor.profile_path, name: actor.name, character: actor.character});
+      }
+      return actors;
+    }));
   }
 
   fetchMovie(ID: number){
@@ -35,13 +51,11 @@ export class MovieApiService{
         if(responseData.backdrop_path !== null)
           poster_path = this.img_path + responseData.backdrop_path;
 
-        const movie: Movie = new Movie(
-          ID, poster_path, responseData.title,
-          chosenGenre, responseData.vote_average, responseData.overview, responseData.vote_count,
-          responseData.release_date?.split('-')[0],allGenres
-        );
-
-        return movie;
+        return new
+        Movie(responseData.vote_average, responseData.id, this.img_path + responseData.backdrop_path,
+          this.img_path + responseData.poster_path, responseData.title, chosenGenre,
+          responseData.overview, responseData.vote_count, responseData.release_date, allGenres,
+          responseData.runtime, responseData.tagline, this.Actors);
       }));
   }
 
@@ -50,7 +64,7 @@ export class MovieApiService{
     this.fetchGenres();
     const pageNum = page ? page : 1;
     this.http.get<MoviesResp>(
-      `${this.base_url}/movie/top_rated?api_key=${this.api_key}&language=en-US&page=${pageNum}`)
+      `${this.base_url}/movie/top_rated?api_key=${this.api_key}&language=en&page=${pageNum}&region=EG`)
       .pipe(map(responseData => {
         const movies: Movie[] = [];
         for(let movie of responseData.results){
@@ -58,8 +72,9 @@ export class MovieApiService{
 
           const chosenGenre = this.getGenre(genres[0]);
 
-          const fetchedMovie = new Movie(movie.id, this.img_path + movie.backdrop_path,
-            movie.title, chosenGenre, movie.vote_average, movie.overview, movie.vote_count, movie.release_date?.split('-')[0]);
+          const fetchedMovie = new Movie(movie.vote_average, movie.id,
+            this.img_path + movie.backdrop_path, this.img_path + movie.poster_path,
+            movie.title, chosenGenre,  movie.overview, movie.vote_count, movie.release_date);
 
           movies.push(fetchedMovie);
         }

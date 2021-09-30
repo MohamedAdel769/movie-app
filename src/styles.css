@@ -1,13 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-
+*, *:before, *:after{
+  box-sizing: border-box;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 html,body{
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.3)
-  ), url('src/assets/imgs/wallpaperflare-cropped.jpg') no-repeat center center fixed;
-  background-size: cover;
+  /*background: linear-gradient(*/
+  /*  rgba(0, 0, 0, 0.6),*/
+  /*  rgba(0, 0, 0, 0.6)*/
+  /*), url('src/assets/imgs/wallpaperflare-cropped.jpg') no-repeat center center fixed;*/
+  /*background-size: cover;*/
 }
 .alert{
   font-weight: 500;
