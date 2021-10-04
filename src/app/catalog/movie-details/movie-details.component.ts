@@ -16,7 +16,7 @@ export class MovieDetailsComponent implements OnInit {
 
   constructor(private router: Router, private movieAPI: MovieApiService, private route: ActivatedRoute,
               private movieService: CatalogService, private errorService: ErrorHandlingService) {
-    this.movie = this.movieService.getMovie();
+    this.movie = new Movie(0);
   }
 
   ngOnInit(): void {
@@ -25,16 +25,18 @@ export class MovieDetailsComponent implements OnInit {
       const id = +this.route.snapshot.params['id'];
       this.movieAPI.fetchMovie(id).subscribe(result => {
         this.movie = result;
-        // @ts-ignore
-        this.movie.vote_count = this.movie.vote_count.toLocaleString();
+        if(this.movie.vote_count)
+          this.movie.vote_count = this.movie.vote_count.toLocaleString();
+
+        this.movieAPI.fetchActors(id).subscribe(result => {
+          this.movie.cast = result;
+        });
         this.isLoading = false;
       }, error => {
           this.errorService.movie404Fired.emit();
           this.isLoading = false;
       });
-      this.movieAPI.fetchActors(id).subscribe(result => {
-        this.movie.cast = result;
-      });
+
     //}
     // else {
     //   this.movie = this.movieService.getMovie();

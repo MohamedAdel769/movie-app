@@ -11,11 +11,13 @@ export class CatalogService{
   private movieSubject = new BehaviorSubject(this.movie);
 
   setMovie(movie: Movie){
-    this.movieSubject.next(movie);
+    this.movieSubject.next({...movie});
   }
+
 
   getMovie() : Movie{
     this.movieSubject.subscribe((data) => {this.movie = data});
+    //console.log(this.movieSubject.value);
     return this.movie;
   }
 

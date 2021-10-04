@@ -85,7 +85,7 @@ margin-bottom: 4px;
 
 .item{
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -98,9 +98,12 @@ margin-bottom: 4px;
   width: 100%;
 }
 
-.cast-list{
+.cast-wrapper{
   background-color: rgba(255, 255, 255, 0.67);
   border-radius: 8px;
+}
+
+.cast-list{
   display: flex;
   flex-wrap: wrap;
   padding: 15px;

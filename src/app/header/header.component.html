@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid d-flex justify-content-center">
+    <div id="nav-links" class="container-fluid d-flex justify-content-center">
       <!--<a routerLink="/" class="navbar-brand">Dashmala</a>-->
       <div class="navbar-nav">
         <a (click)="onNavigate()" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">Movies</a>
@@ -16,8 +16,18 @@
           <a routerLink="/login" class="nav-link nav-item-btn" routerLinkActive="active" (click)="logout()">Logout</a>
         </div>
       </ng-template>
+    </div>
 
+    <div class="dropdown-list">
+      <mat-icon [matMenuTriggerFor]="menu" class="menu-icon">menu</mat-icon>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onNavigate()">Movies</button>
+        <button mat-menu-item (click)="onNavigate()">WatchList</button>
+        <button mat-menu-item (click)="onNavigate()">Celebrities</button>
+      </mat-menu>
     </div>
   </nav>
+
+
 </header>
 

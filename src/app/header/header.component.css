@@ -40,3 +40,22 @@ nav{
 .navbar-brand{
   font-size: 30px;
 }
+
+
+.menu-icon{
+  color: white;
+  font-size: 30px;
+  margin: 0 25px;
+  cursor: pointer;
+}
+
+.dropdown-list{
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  #nav-links { display: none !important}
+  .dropdown-list {
+    display: inline-block;
+  }
+}

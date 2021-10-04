@@ -2,7 +2,7 @@ import {Actor} from "./credits.model";
 
 export class Movie{
   constructor(public rate: number, public id?: number, public imgPath?: string, public posterPath?: string,
-              public title?: string, public genre?: string, public overView?: string, public vote_count?: number,
+              public title?: string, public genre?: string, public overView?: string, public vote_count?: string,
               public release_date?: string, public genres?: string[], public runtime?: number,
               public tagline?: string, public cast?: Actor[]
               ) {
@@ -18,7 +18,7 @@ export interface MovieResp{
   vote_average: number;
   poster_path?: string;
   genres?: Genre[];
-  vote_count?: number;
+  vote_count?: string;
   release_date?: string;
   runtime?: number;
   tagline?: string;

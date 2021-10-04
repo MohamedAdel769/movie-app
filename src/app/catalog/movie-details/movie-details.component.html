@@ -8,17 +8,17 @@
 <!--    </a>-->
 <!--  </div>-->
 <!--</div>-->
-<div class="row" *ngIf="!isLoading && movie.id">
-  <div class="col-10">
+<div class="row" *ngIf="!isLoading && movie.id else spinner">
+  <div class="col-sm-12 col-lg-10">
     <div class="row left-panel">
-      <div class="col-md-3 side-img">
+      <div class="col-sm-12 col-lg-3 side-img">
         <img [src]="movie.posterPath" [alt]="movie.title">
 <!--        <ul class="list-group list-group-flush">-->
 <!--          <li class="list-group-item">Cast</li>-->
 <!--          <li class="list-group-item">Reviews</li>-->
 <!--        </ul>-->
       </div>
-      <div class="col-md-9 mt-2" id="movie-details">
+      <div class="col-sm-12 col-lg-9 mt-2" id="movie-details">
         <article class="content-section">
           <div class="movie-metadata">
             <h1 class="mr-2 movie-title">{{ movie.title }}</h1>
@@ -35,15 +35,31 @@
         <article class="content-section">
           <div class="movie-metadata">
             <h1 class="mr-2 movie-title">Cast</h1>
-            <div class="cast-list">
-              <div class="cast-item" *ngFor="let actor of movie.cast | slice:0:10">
-                <img [src]="actor.profile_path" [alt]="actor.name">
-                <div class="cast-alias">
-                  <span class="actor-name">{{ actor.name }}</span>
-                  <span>{{ actor.character }}</span>
+            <div class="row cast-wrapper">
+              <div class="col">
+                <div class="cast-list">
+                  <div class="cast-item" *ngFor="let actor of movie.cast | slice:0:5">
+                    <img [src]="actor.profile_path" [alt]="actor.name">
+                    <div class="cast-alias">
+                      <span class="actor-name">{{ actor.name }}</span>
+                      <span>{{ actor.character }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="cast-list">
+                  <div class="cast-item" *ngFor="let actor of movie.cast | slice:5:10">
+                    <img [src]="actor.profile_path" [alt]="actor.name">
+                    <div class="cast-alias">
+                      <span class="actor-name">{{ actor.name }}</span>
+                      <span>{{ actor.character }}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
         </article>
         <article class="content-section">
@@ -57,7 +73,7 @@
       </div>
     </div>
   </div>
-  <div class="col-2">
+  <div class="col-sm-12 col-lg-2">
     <div class="wrapper">
       <div class="item">
         <mat-icon aria-hidden="false" aria-label="Example home icon">calendar_today</mat-icon>
@@ -75,12 +91,7 @@
         WATCHLIST IT
       </button>
     </div>
-
   </div>
-
-<!--  <button class="btn btn-primary" type="button" (click)="showMovies()">-->
-<!--    Back-->
-<!--  </button>-->
 </div>
 <ng-template #spinner>
   <div class="mt-5 d-flex justify-content-center">
