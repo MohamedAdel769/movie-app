@@ -29,8 +29,7 @@ export class MovieListComponent implements OnInit {
 
   movieSelected(movieItem: Movie){
     this.catalogService.setMovie(movieItem);
-    this.router.navigate(['m', movieItem.id], {
-      relativeTo: this.route,
+    this.router.navigate(['/m', movieItem.id], {
       queryParams: {page:  this.currentPage} });
   }
 

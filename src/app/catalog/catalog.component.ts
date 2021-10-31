@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MovieApiService} from "../services/movie-api.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-catalog',
@@ -9,10 +10,11 @@ import {MovieApiService} from "../services/movie-api.service";
 export class CatalogComponent implements OnInit {
   showDetails: boolean = false;
 
-  constructor(private movieAPI: MovieApiService) { }
+  constructor(private movieAPI: MovieApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.movieAPI.fetchMovies();
+    console.log(this.route.toString());
+    //this.router.navigate(['/movies']);
   }
 
 }

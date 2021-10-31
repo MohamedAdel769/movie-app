@@ -40,12 +40,11 @@ export class MovieDetailsComponent implements OnInit {
     //}
     // else {
     //   this.movie = this.movieService.getMovie();
-    //   // @ts-ignore
     //   this.movie.vote_count = this.movie.vote_count.toLocaleString();
     // }
   }
 
   showMovies(){
-    this.router.navigate(['/'], {queryParamsHandling: "preserve"});
+    this.router.navigate(['/movies'], {queryParamsHandling: "preserve"});
   }
 }

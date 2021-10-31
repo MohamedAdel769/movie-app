@@ -10,6 +10,7 @@ html,body{
   /*  rgba(0, 0, 0, 0.6)*/
   /*), url('src/assets/imgs/wallpaperflare-cropped.jpg') no-repeat center center fixed;*/
   /*background-size: cover;*/
+  background-color: #eeeeee24 !important;
 }
 .alert{
   font-weight: 500;

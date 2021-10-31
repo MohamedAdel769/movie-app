@@ -32,6 +32,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onNavigate(){
-    this.router.navigate(['/'], {queryParamsHandling: "preserve"});
+    this.router.navigate(['/movies'], {queryParamsHandling: "preserve"});
   }
 }
