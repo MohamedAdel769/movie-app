@@ -1,48 +1,55 @@
 import {EventEmitter, Injectable} from "@angular/core";
-import {SessionDetails, User} from "../models/user.model";
+import {jwt_json, SessionDetails, User} from "../models/user.model";
 import {Subject} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment.prod";
 
 @Injectable({providedIn: "root"})
 export class AuthService{
-  users: User[] = [
-    new User("mo@gmail.com", "123456"),
-    new User("test@gmail.com", "aaaaaa"),
-    new User("t@gmail.com", "asd1234")
-  ];
-
+  apiBaseUrl: string = environment.apiBaseUrl;
   sessionEvent = new Subject<SessionDetails>();
-  currSession = new SessionDetails(false, new User('',''));
+  currSession = new SessionDetails(false, new User('',''), '');
+
+  constructor(private http: HttpClient) {
+  }
+
+  sendLoginReq(newUser: User) {
+    return this.http.post<jwt_json>(`${this.apiBaseUrl}/login`, newUser);
+  }
 
   logIn(newUser: User) : boolean{
-    const uIndex = this.users.findIndex( ({ email }) => email === newUser.email );
+    let jwt = null;
 
-    if(uIndex !== -1 && this.users[uIndex].password === newUser.password){
-      this.currSession = new SessionDetails(true, newUser);
-      this.sessionEvent.next(this.currSession);
-      localStorage.setItem('userData', JSON.stringify(newUser));
-      return true;
-    }
-    else{
-      return false;
-    }
+    this.sendLoginReq(newUser).subscribe(
+      value => {
+          console.log(value.jwt);
+          jwt = value.jwt;
+          this.currSession = new SessionDetails(true, newUser, jwt);
+          this.sessionEvent.next(this.currSession);
+          localStorage.setItem('userData', JSON.stringify(this.currSession));
+        }, error => {
+          jwt = "";
+      }
+    );
+
+    return (jwt !== "");
   }
 
   autoLogIn(){
-    const userData: {
-      email: string;
-      password: string;
+    const sessionData: {
+      isLoggedIn: boolean;
+      currUser: User;
+      jwt: string;
     } = JSON.parse(<string>localStorage.getItem('userData'));
-    if(!userData)
+    if(!sessionData)
       return;
 
-    const loadedUser = new User(userData.email, userData.password);
-    this.currSession = new SessionDetails(true, loadedUser);
-    this.sessionEvent.next(this.currSession);
+    this.sessionEvent.next(sessionData);
   }
 
   logOut(){
-    this.sessionEvent.next(new SessionDetails(false, new User('', '') ) );
-    this.currSession = new SessionDetails(false, new User('',''));
+    this.currSession = new SessionDetails(false, new User('',''), '');
+    this.sessionEvent.next(this.currSession);
     localStorage.removeItem('userData');
   }
 }
