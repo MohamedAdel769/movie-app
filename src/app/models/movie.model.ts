@@ -22,6 +22,10 @@ export interface MovieResp{
   release_date?: string;
   runtime?: number;
   tagline?: string;
+  is_hidden?: boolean;
+  original_language: string;
+  flags?: number;
+  source?: string;
 }
 
 export interface MoviesResp{

@@ -4,6 +4,7 @@ import {Injectable} from "@angular/core";
 import {map} from "rxjs/operators";
 import {CatalogService} from "./catalog.service";
 import {Actor, Credits} from "../models/credits.model";
+import {environment} from "../../environments/environment.prod";
 
 @Injectable({providedIn: "root"})
 export class MovieApiService{
@@ -13,6 +14,8 @@ export class MovieApiService{
   img_path = `https://image.tmdb.org/t/p/${this.img_size}`;
   genres: Genre[];
   Actors: Actor[];
+
+  apiBaseUrl: string = environment.apiBaseUrl;
 
   constructor(private http: HttpClient, private catalogService: CatalogService) {
     this.genres = [];
