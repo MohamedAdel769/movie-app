@@ -6,6 +6,7 @@ import {AuthGuardService} from "./services/auth-guard.service";
 import {MovieDetailsComponent} from "./catalog/movie-details/movie-details.component";
 import {MovieListComponent} from "./catalog/movie-list/movie-list.component";
 import {NotFoundComponent} from "./error-handling/not-found/not-found.component";
+import {TopRatedComponent} from "./catalog/top-rated/top-rated.component";
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     children: [
       {path: 'movies', component: MovieListComponent},
-      {path: 'm/:id', component: MovieDetailsComponent}
+      {path: 'm/:id', component: MovieDetailsComponent},
+      {path: 'topRated', component: TopRatedComponent}
     ]
   },
   {path: 'login', component: UserLoginComponent},

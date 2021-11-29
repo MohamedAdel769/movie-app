@@ -1,0 +1,18 @@
+<h1>Top Rated Movies</h1>
+<div class="row media-grid">
+  <div class="media-block col-md-6 col-lg-3" *ngFor="let movieItem of movieList; index as i">
+    <div class="card">
+      <a style="cursor: pointer" (click)="movieSelected(movieItem)">
+        <img class="card-img-top" [src]="movieItem.posterPath" [alt]="movieItem.title">
+        <div class="info-block">
+          <span>Rank</span>
+          <span>{{i + 1}}</span>
+        </div>
+      </a>
+      <div class="card-body">
+        <h2 class="card-title">{{ movieItem.title }}</h2>
+        <span>{{ movieItem.release_date }}</span>
+      </div>
+    </div>
+  </div>
+</div>

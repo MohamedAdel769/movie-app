@@ -31,7 +31,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.sessionSub.unsubscribe();
   }
 
-  onNavigate(){
-    this.router.navigate(['/movies'], {queryParamsHandling: "preserve"});
+  onNavigate(choice: number){
+    if(choice == 1)
+      this.router.navigate(['/movies'], {queryParamsHandling: "preserve"});
+    else
+      this.router.navigate(['/topRated']);
   }
 }

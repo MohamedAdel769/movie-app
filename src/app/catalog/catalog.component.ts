@@ -8,13 +8,11 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-  showDetails: boolean = false;
-
   constructor(private movieAPI: MovieApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     console.log(this.route.toString());
-    //this.router.navigate(['/movies']);
+    this.router.navigate(['/topRated']);
   }
 
 }
