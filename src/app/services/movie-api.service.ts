@@ -15,8 +15,6 @@ export class MovieApiService{
   genres: Genre[];
   Actors: Actor[];
 
-  apiBaseUrl: string = environment.apiBaseUrl;
-
   constructor(private http: HttpClient, private catalogService: CatalogService) {
     this.genres = [];
     this.Actors = [];

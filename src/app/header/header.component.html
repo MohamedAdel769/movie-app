@@ -5,7 +5,7 @@
       <div class="navbar-nav">
         <a (click)="onNavigate(1)" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">Movies</a>
         <a (click)="onNavigate(2)" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">Top Rated</a>
-        <a (click)="onNavigate(3)" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">Celebrities</a>
+        <a (click)="onNavigate(3)" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">Home</a>
         <a (click)="onNavigate(4)" style="cursor: pointer" class="nav-item-btn" routerLinkActive="active">WatchList</a>
       </div>
       <div *ngIf="!isLoggedIn else logoutBtn">
@@ -23,7 +23,7 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="onNavigate(1)">Movies</button>
         <button mat-menu-item (click)="onNavigate(2)">Top Rated</button>
-        <button mat-menu-item (click)="onNavigate(3)">Celebrities</button>
+        <button mat-menu-item (click)="onNavigate(3)">Home</button>
       </mat-menu>
     </div>
   </nav>

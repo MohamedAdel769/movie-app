@@ -47,6 +47,18 @@ export class AuthService{
     this.sessionEvent.next(sessionData);
   }
 
+  getSessionData(): boolean{
+    const sessionData: {
+      isLoggedIn: boolean;
+      currUser: User;
+      jwt: string;
+    } = JSON.parse(<string>localStorage.getItem('userData'));
+
+    console.log(sessionData);
+
+    return !!sessionData;
+  }
+
   logOut(){
     this.currSession = new SessionDetails(false, new User('',''), '');
     this.sessionEvent.next(this.currSession);

@@ -33,8 +33,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onNavigate(choice: number){
     if(choice == 1)
-      this.router.navigate(['/movies'], {queryParamsHandling: "preserve"});
+      this.router.navigate(['home/movies'], {queryParamsHandling: "preserve"});
+    else if(choice == 2)
+      this.router.navigate(['home/topRated']);
     else
-      this.router.navigate(['/topRated']);
+      this.router.navigate(['home']);
   }
 }

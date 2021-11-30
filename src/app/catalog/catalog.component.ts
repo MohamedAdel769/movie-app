@@ -12,7 +12,7 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.route.toString());
-    this.router.navigate(['/topRated']);
+    //this.router.navigate(['/topRated']);
   }
 
 }

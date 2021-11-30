@@ -15,6 +15,7 @@ import { ErrorHandlingComponent } from './error-handling/error-handling.componen
 import {HttpClientModule} from "@angular/common/http";
 import { NotFoundComponent } from './error-handling/not-found/not-found.component';
 import { TopRatedComponent } from './catalog/top-rated/top-rated.component';
+import { QuotesComponent } from './catalog/quotes/quotes.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { TopRatedComponent } from './catalog/top-rated/top-rated.component';
     UserLoginComponent,
     ErrorHandlingComponent,
     NotFoundComponent,
-    TopRatedComponent
+    TopRatedComponent,
+    QuotesComponent
   ],
   imports: [
     BrowserModule,
